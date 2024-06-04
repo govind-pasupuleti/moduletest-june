@@ -37,9 +37,11 @@ function renderTable(data) {
             <td>${coin.symbol}</td>
             <td>${coin.current_price}</td>
         `;
+        row.dataset.priceChangePercentage = coin.price_change_percentage_24h; // Set the attribute for percentage change
         tableBody.appendChild(row);
     });
 }
+
 
 async function filterData() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
