@@ -36,7 +36,6 @@ function renderTable(data) {
             <td><img src="${coin.image}" alt="${coin.name}" width="50"></td>
             <td>${coin.symbol}</td>
             <td>${coin.current_price}</td>
-            <td>${coin.total_volume}</td>
         `;
         tableBody.appendChild(row);
     });
@@ -92,8 +91,8 @@ function sortByPercentageChange() {
 
     // Slice the rows array to exclude the header row
     const sortedRows = rows.slice(1).sort((a, b) => {
-        const aPercentageChange = parseFloat(a.dataset.percentageChange);
-        const bPercentageChange = parseFloat(b.dataset.percentageChange);
+        const aPercentageChange = parseFloat(a.dataset.priceChangePercentage);
+        const bPercentageChange = parseFloat(b.dataset.priceChangePercentage);
         return isAscendingPercentageChange ? aPercentageChange - bPercentageChange : bPercentageChange - aPercentageChange;
     });
 
@@ -112,3 +111,20 @@ function sortByPercentageChange() {
 }
 
 
+function renderTable(data) {
+    const tableBody = document.getElementById('coinTableBody');
+    tableBody.innerHTML = '';
+    data.forEach(coin => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${coin.name}</td>
+            <td>${coin.id}</td>
+            <td><img src="${coin.image}" alt="${coin.name}" width="50"></td>
+            <td>${coin.symbol}</td>
+            <td>${coin.current_price}</td>
+            <td>${coin.total_volume}</td>
+        `;
+        row.dataset.priceChangePercentage = coin.price_change_percentage_24h; // Set the attribute for percentage change
+        tableBody.appendChild(row);
+    });
+}
