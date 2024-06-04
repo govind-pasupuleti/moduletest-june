@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoinGecko API Table</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div style="margin-bottom: 20px;" class="button-box">
+    <input type="text" id="searchInput" placeholder="Search By Name or Symbol">
+    <button id="sortByMarketCapButton" onclick="sortByMarketCapChange()" class="sort-btn"  >Sort by Market Cap</button>
+
+    <button id="sortByPercentageChangeButton" onclick="sortByPercentageChange()" class="sort-btn"> Sort by Percentage </button>
+    
+
+  </div>
+  
+  <table id="coinTable">
+    <tbody id="coinTableBody">
+    </tbody>
+  </table>
+
+  <script src="./script.js"></script>
+</body>
+</html>
